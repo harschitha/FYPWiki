@@ -1,0 +1,31 @@
+<!-- templates/result.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Trends Search Results</title>
+</head>
+<body>
+    <h1>Google Trends Search Results for "{{ search_term }}"</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Search Query</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for query, percentage in results.iterrows() %}
+            <tr>
+                <td>{{ query }}</td>
+                <td>{{ percentage['percentage'] }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <h2>Bar Graph</h2>
+        <img src="{{ url_for('static', filename='graph.png') }}" alt="Bar Graph">
+    </div>
+</body>
+</html>
